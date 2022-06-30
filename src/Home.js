@@ -4,24 +4,25 @@ import BlogList from './BlogList';
 const Home = () => {
   
   const [blogs, setBlogs] = useState(null);
+  const [isPending, setPending] = useState(true)
 
   useEffect(() => {
-    fetch('http://localhost:8000/blogs')
-    .then(res=> {
+      fetch('http://localhost:8000/blogs')
+    .then(res => {
       return res.json()
     })
     .then(data => {
       setBlogs(data)
+      setPending(false)
     })
+    
   },[]);
 
     return (
         <div className="home">
-        
+        {isPending && <div>Loading...</div>}
         {blogs && <BlogList blogs={blogs} title='My Blogs'/>}
-        <button onClick={()=> setName('luigi')}>change name</button>
-        <p>{name}</p>
-        </div>
+         </div>
        
       );
 }
