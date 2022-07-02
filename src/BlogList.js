@@ -8,8 +8,7 @@ const BlogList = ({blogs,title}) => {
               <Link to={`/blogs/${blog.id}`}>
               <h1>{blog.title}</h1>
               <p>Written by: {blog.author}</p>
-              </Link>
-              
+              </Link>      
          </div>
         )}
     </div> );
