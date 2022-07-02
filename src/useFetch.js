@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-
 const useFetch = (url) => {
     
     const [data, setBlogs] = useState(null);
@@ -8,22 +7,23 @@ const useFetch = (url) => {
     const [error, setError] = useState(null)
   
     useEffect(() => {
-        fetch(url)
-          .then(res => {
-            if (!res.ok) {
-              throw Error('could not fetch the data for that resource')
-            }
-            return res.json()
-          })
-          .then(data => {
-            setBlogs(data)
-            setPending(false)
-            setError(null)
-          })
-          .catch(err => {
-            setPending(false)
-            setError(err.message)
-          })
+      setTimeout(() => 
+       fetch(url)
+        .then(res => {
+         if (!res.ok) {
+          throw Error('could not fetch the data for that resource')
+        }
+        return res.json()
+      })
+      .then(data => {
+        setBlogs(data)
+        setPending(false)
+        setError(null)
+      })
+      .catch(err => {
+        setPending(false)
+        setError(err.message)
+      }),3000)  
       }, [url]);
        
       return { data, isPending, error }
