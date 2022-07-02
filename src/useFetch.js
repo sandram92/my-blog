@@ -30,7 +30,7 @@ const useFetch = (url) => {
             setPending(false)
             setError(err.message)
           }
-        }), 3000)
+        }), 2000)
     return () => abortCont.abort()
   }, [url]);
 

@@ -6,7 +6,7 @@ const BlogDetails = () => {
 
     return ( 
          <div className="className">
-        <div>blog details {id} </div>
+        <div>blog details {id} </div> 
         </div>
      );
 }
